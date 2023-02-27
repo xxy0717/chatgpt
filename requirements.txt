@@ -1,0 +1,6 @@
+flask
+requests
+pyaudio
+wave
+streamlit
+openai
