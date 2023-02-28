@@ -3,7 +3,7 @@ import openai
 import streamlit as st
 
 # 配置OpenAI API Key
-openai.api_key = openai_secret_manager.get_secret("openai")["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"]
+openai.api_key = openai_secret_manager.get_secret("openai")["api_key"]
 MODEL_ID = "davinci"
 
 # Streamlit应用程序
