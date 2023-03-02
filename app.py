@@ -1,7 +1,19 @@
 import streamlit as st
+import os
 import openai
 
+# Read the API key from the environment variable
 openai.api_key = os.environ.get("OPENAI_API_KEY")
+
+# Call OpenAI API using the API key
+response = openai.Completion.create(
+    engine="davinci",
+    prompt="Hello,",
+    max_tokens=5
+)
+
+# Print the response
+print(response.choices[0].text)
 
 
 # 定义应用程序标题和文本输入框
