@@ -1,6 +1,6 @@
 import streamlit as st
 import openai
-openai.api_key = "YOUR_API_KEY"
+openai.api_key = "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"
 
 # 定义输入框和提交按钮
 input_text = st.text_area("请输入文本", "")
