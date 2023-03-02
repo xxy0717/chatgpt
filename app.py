@@ -1,6 +1,8 @@
 import streamlit as st
 import openai
 import os
+import streamlit as st
+st.secrets["OPENAI_API_KEY"]
 
 # 设置OpenAI API密钥
 if "OPENAI_API_KEY" not in st.secrets:
