@@ -2,6 +2,13 @@ import streamlit as st
 import openai
 import os
 
+# 检查环境变量是否存在
+if "OPENAI_API_KEY" in os.environ:
+    env_var = os.environ["OPENAI_API_KEY"]
+    print(f"环境变量已设置为: {env_var}")
+else:
+    print("环境变量未设置")
+
 # Read the API key from the environment variable
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
