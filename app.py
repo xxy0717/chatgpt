@@ -1,41 +1,24 @@
 import streamlit as st
 import openai
-import toml
-import os
 
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
-# 读取 secrets.toml 文件中的 OpenAI API 密钥
-#secrets = toml.load("secrets.toml")
-#openai.api_key = secrets["openai"]["api_key"]
 
+# 定义应用程序标题和文本输入框
+st.title("OpenAI文本生成应用程序")
+input_text = st.text_area("请输入文本", "")
 
-# 设置OpenAI API密钥
-#if "OPENAI_API_KEY" not in st.secrets:
-#    st.error("请在Streamlit Secrets中设置OpenAI API密钥")
-#else:
-#    openai.api_key = st.secrets["OPENAI_API_KEY"]
-
-# 输入框
-text = st.text_input("请输入文本：")
-
-# 提交按钮
+# 处理提交按钮点击事件
 if st.button("提交"):
-    try:
-        # 调用OpenAI API生成文本
-        response = openai.Completion.create(
-            engine="davinci",
-            prompt=text,
-            max_tokens=50,
-            n=1,
-            stop=None,
-            temperature=0.5,
-        )
-
-        # 输出结果
-        st.write(response.choices[0].text)
-    except Exception as e:
-        print("OpenAI API调用错误：", e)
-
+    # 调用OpenAI API
+    prompt = input_text.strip()
+    response = openai.Completion.create(
+        engine="davinci",
+        prompt=prompt,
+        max_tokens=60
+    )
+    # 显示生成的文本
+    st.write("生成的文本：")
+    st.write(response.choices[0].text.strip())
 
         
