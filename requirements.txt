@@ -1,3 +1,2 @@
 openai
 streamlit
-openai_secret_manager
