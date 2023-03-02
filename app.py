@@ -8,6 +8,15 @@ openai.api_key = "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"
 st.title("OpenAI文本生成应用程序")
 input_text = st.text_area("请输入文本", "")
 
+try:
+    response = openai.Completion.create(
+        engine="davinci",
+        prompt=prompt,
+        max_tokens=60
+    )
+except openai.Error as e:
+    st.write("出错了：", e)
+
 # 处理提交按钮点击事件
 if st.button("提交"):
     # 调用OpenAI API
