@@ -33,6 +33,6 @@ if st.button("提交"):
         st.write(response.choices[0].text)
     except openai.Error as e:
 #        st.error("OpenAI API调用错误：" + str(e))
-    print("OpenAI API调用错误：", e)
+        print("OpenAI API调用错误：", e)
 
         
