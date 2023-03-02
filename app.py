@@ -1,10 +1,13 @@
 import streamlit as st
 import openai
 import toml
+import os
+
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # 读取 secrets.toml 文件中的 OpenAI API 密钥
-secrets = toml.load("secrets.toml")
-openai.api_key = secrets["openai"]["api_key"]
+#secrets = toml.load("secrets.toml")
+#openai.api_key = secrets["openai"]["api_key"]
 
 
 # 设置OpenAI API密钥
