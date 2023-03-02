@@ -7,7 +7,7 @@ st.secrets["OPENAI_API_KEY"]
 if "OPENAI_API_KEY" not in st.secrets:
     st.error("请在Streamlit Secrets中设置OpenAI API密钥")
 else:
-    openai.api_key = st.secrets["OPENAI_API_KEY"]
+    openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 # 输入框
 text = st.text_input("请输入文本：")
