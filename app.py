@@ -31,7 +31,8 @@ if st.button("提交"):
 
         # 输出结果
         st.write(response.choices[0].text)
-    except openai.Error as e:
+    except Exception as e:
         print("OpenAI API调用错误：", e)
+
 
         
