@@ -2,7 +2,7 @@ import openai
 import streamlit as st
 
 # 设置OpenAI API密钥
-openai.api_key = "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"
+openai.api_key = "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"
 
 # 定义主函数
 def main():
