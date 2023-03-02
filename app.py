@@ -2,30 +2,29 @@ import openai
 import streamlit as st
 
 # 设置OpenAI API密钥
-openai.api_key = "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"
+openai.api_key = "你的OpenAI API密钥"
 
-# 定义应用程序标题和文本输入框
-st.title("OpenAI文本生成应用程序")
-input_text = st.text_area("请输入文本", "")
+# 定义主函数
+def main():
+    # 设置应用程序标题
+    st.title("Chat with GPT-3")
 
-try:
-    response = openai.Completion.create(
-        engine="davinci",
-        prompt=prompt,
-        max_tokens=60
-    )
-except openai.Error as e:
-    st.write("出错了：", e)
+    # 显示输入框，以获取用户输入
+    prompt = st.text_input("You: ", "")
 
-# 处理提交按钮点击事件
-if st.button("提交"):
-    # 调用OpenAI API
-    prompt = input_text.strip()
-    response = openai.Completion.create(
-        engine="davinci",
-        prompt=prompt,
-        max_tokens=60
-    )
-    # 显示生成的文本
-    st.write("生成的文本：")
-    st.write(response.choices[0].text.strip())
+    # 当用户点击“Send”按钮时，调用OpenAI API，并显示响应
+    if st.button("Send"):
+        try:
+            response = openai.Completion.create(
+                engine="davinci",
+                prompt=prompt,
+                max_tokens=60
+            )
+            message = response.choices[0].text.strip()
+            st.text_area("GPT-3:", message)
+        except Exception as e:
+            st.error(e)
+
+# 调用主函数
+if __name__ == "__main__":
+    main()
