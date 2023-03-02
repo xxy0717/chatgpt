@@ -1,33 +1,19 @@
-import openai_secret_manager
-import openai
 import streamlit as st
+import openai
+openai.api_key = "YOUR_API_KEY"
 
-# 配置OpenAI API Key
-openai.api_key = openai_secret_manager.get_secret("openai")["api_key"]
-MODEL_ID = "davinci"
+# 定义输入框和提交按钮
+input_text = st.text_area("请输入文本", "")
+submit_button = st.button("提交")
 
-# Streamlit应用程序
-st.set_page_config(page_title="Chatbot Demo")
-
-st.title("Chatbot Demo")
-
-# 定义聊天框
-st.sidebar.subheader("Chat")
-user_input = st.sidebar.text_input("You", "")
-bot_output = st.sidebar.empty()
-
-# 与OpenAI模型进行交互，获取回复
-if st.sidebar.button("Send"):
-    # 调用OpenAI模型生成回复
+# 处理提交按钮点击事件
+if submit_button:
+    # 调用OpenAI API
     response = openai.Completion.create(
-        engine=MODEL_ID,
-        prompt=user_input,
-        max_tokens=1024,
-        n=1,
-        stop=None,
-        temperature=0.5,
+        engine="davinci",
+        prompt=input_text,
+        max_tokens=60
     )
-    # 提取回复
-    bot_response = response.choices[0].text.strip()
-    # 更新聊天框
-    bot_output.text(bot_response)
+    # 显示结果
+    st.write("生成的文本：")
+    st.write(response.choices[0].text)
