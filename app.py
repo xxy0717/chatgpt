@@ -3,7 +3,7 @@ import openai
 import os
 
 # 设置OpenAI API密钥
-if "openai" not in st.secrets:
+if "OPENAI_API_KEY" not in st.secrets:
     st.error("请在Streamlit Secrets中设置OpenAI API密钥")
 else:
     openai.api_key = st.secrets["OPENAI_API_KEY"]
